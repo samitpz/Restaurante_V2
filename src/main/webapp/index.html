@@ -2,55 +2,159 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Restaurante Samuel 🍽️</title>
-    <link rel="stylesheet" href="css/estilo.css">
+    <title>El Fogón del Chef 🔥 - Crea tu Experiencia Gourmet</title>
+    <link rel="stylesheet" href="CSS/estilo.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            // Inicializa la visibilidad de los campos
+            const toggleOptions = () => {
+                // Opciones de Jugo
+                const tipoBebida = $('#tipo_bebida').val();
+                $('.opciones-jugo').toggle(tipoBebida === 'jugo');
+
+                // Opciones de Helado
+                const postreSeleccionado = $('#postre').val();
+                $('.opciones-helado').toggle(postreSeleccionado === 'helado');
+            };
+
+            // Asigna el evento change a los selects principales
+            $('#tipo_bebida').on('change', toggleOptions);
+            $('#postre').on('change', toggleOptions);
+
+            // Ejecuta la función al cargar la página por si hay valores preseleccionados
+            toggleOptions();
+        });
+    </script>
 </head>
 <body>
-<h1>Bienvenido al Restaurante Samuel</h1>
-<form action="pedido" method="post">
-    <label>Entrada:</label>
-    <select name="entrada">
-        <option>-- Seleccionar --</option>
-        <option>Ensalada César</option>
-        <option>Ensalada Mixta</option>
-        <option>Sopa del Día</option>
-    </select>
+<header>
+    <h1>Bienvenido a El Fogón del Chef 🔥</h1>
+    <p>Selecciona tu menú de lujo. Crea tu experiencia gastronómica perfecta.</p>
+</header>
 
-    <label>Plato Fuerte:</label>
-    <select name="plato">
-        <option>-- Seleccionar --</option>
-        <option>Pasta Alfredo</option>
-        <option>Carne Asada</option>
-        <option>Pollo al Curry</option>
-    </select>
+<form action="pedido" method="post" class="pedido-form">
 
-    <label>Postre:</label>
-    <select name="postre">
-        <option>-- Seleccionar --</option>
-        <option>Flan</option>
-        <option>Tiramisú</option>
-        <option>Helado</option>
-    </select>
+    <fieldset class="menu-section">
+        <legend>🌶️ Entradas y Antojitos</legend>
+        <label>Antojito/Entrada (Opcional):</label>
+        <select name="entrada">
+            <option value="no_desea_entrada" selected>-- No deseo entrada --</option>
+            <option value="chicharroncitos_limon">Chicharroncitos crujientes con limón</option>
+            <option value="arepitas_mozarella">Mini-Arepitas con Queso Mozzarella</option>
+            <option value="patacones_guacamole">Patacones con Guacamole fresco</option>
+            <option value="empanaditas_carne">Empanaditas de Carne desmechada</option>
+            <option value="sopa_azuas">Sopa de Azuas del día</option>
+            <option value="buñuelos_queso">Buñuelos de Queso frito</option>
+            <option value="croquetas_pulpo">Croquetas de Pulpo a la Gallega</option>
+            <option value="tostadas_camaron">Tostadas de Camarón y chipotle</option>
+            <option value="brochetas_vegetales">Brochetas de Vegetales Asados</option>
+            <option value="mini_ceviche_tilapia">Mini Ceviche de Tilapia</option>
+        </select>
+    </fieldset>
 
-    <label>Bebida:</label>
-    <select name="bebida">
-        <option>-- Seleccionar --</option>
-        <option>Agua</option>
-        <option>Leche</option>
-        <option>Cerveza</option>
-        <option>Jugo Natural</option>
-    </select>
+    <fieldset class="menu-section">
+        <legend>🥩 Platos Fuertes</legend>
+        <label>Plato Fuerte:</label>
+        <select name="plato_fuerte" required>
+            <option value="">-- Seleccionar Plato Fuerte --</option>
+            <option value="lomo_fino_champinones">Lomo Fino en Salsa de Champiñones</option>
+            <option value="cazuela_mariscos">Cazuela de Mariscos al Ajillo</option>
+            <option value="sushi_plato_combinado">Sushi - Plato Combinado (20 pzas)</option>
+            <option value="risotto_parmesano">Risotto de Hongos y Queso Parmesano</option>
+            <option value="rib_eye_madurado">Rib Eye Añejo a la parrilla</option>
+            <option value="salmon_miel_mostaza">Salmón Glaseado con Miel y Mostaza</option>
+            <option value="pollo_curry_verde">Pollo al Curry Verde Tailandés</option>
+            <option value="pasta_carbonara_original">Pasta Carbonara (Receta original)</option>
+            <option value="tacos_pastor_gourmet">Tacos de Pastor Gourmet</option>
+            <option value="hamburguesa_wagyu">Hamburguesa de Carne Wagyu</option>
+        </select>
+    </fieldset>
 
-    <label>Merienda:</label>
-    <select name="merienda">
-        <option>-- Seleccionar --</option>
-        <option>Sandwich</option>
-        <option>Arepa</option>
-        <option>Galletas</option>
-    </select>
+    <fieldset class="menu-section">
+        <legend>🍹 Bebidas Personalizadas</legend>
 
-    <br><br>
-    <button type="submit">Hacer Pedido</button>
+        <label>Tipo de Bebida:</label>
+        <select name="tipo_bebida" id="tipo_bebida" required>
+            <option value="">-- Seleccionar Tipo --</option>
+            <option value="agua_mineral">Agua Mineral/Gaseosa</option>
+            <option value="jugo">Jugo Natural Personalizado</option>
+            <option value="vino_tinto_crianza">Vino Tinto Crianza</option>
+            <option value="vino_blanco_sauvignon">Vino Blanco Sauvignon Blanc</option>
+            <option value="cerveza_ipa">Cerveza IPA Artesanal</option>
+            <option value="cerveza_lager">Cerveza Lager Nacional</option>
+            <option value="gaseosa_cola">Gaseosa Cola (varias marcas)</option>
+            <option value="gaseosa_lima">Gaseosa Lima-Limón</option>
+            <option value="te_frio_limon">Té Frío de Limón</option>
+            <option value="cafe_espresso">Café Espresso</option>
+        </select>
+
+        <div class="opciones-jugo" style="display:none;">
+            <label>Jugo - ¿De qué fruta?</label>
+            <select name="jugo_fruta">
+                <option value="mango">Mango</option>
+                <option value="fresa">Fresa</option>
+                <option value="maracuya">Maracuyá</option>
+                <option value="piña">Piña</option>
+                <option value="limonada_coco">Limonada de Coco</option>
+                <option value="guanabana">Guanábana</option>
+                <option value="lulo">Lulo</option>
+                <option value="mora">Mora</option>
+                <option value="naranja">Naranja</option>
+                <option value="guayaba">Guayaba</option>
+            </select>
+
+            <label>Jugo - ¿Base?</label>
+            <div class="inline-options">
+                <input type="radio" id="base_agua" name="jugo_base" value="agua" checked><label for="base_agua">Agua</label>
+                <input type="radio" id="base_leche" name="jugo_base" value="leche"><label for="base_leche">Leche</label>
+            </div>
+        </div>
+
+    </fieldset>
+
+    <fieldset class="menu-section">
+        <legend>🍰 Postres y Helados</legend>
+
+        <label>Postre:</label>
+        <select name="postre" id="postre" required>
+            <option value="">-- Seleccionar Postre --</option>
+            <option value="tarta_santiago">Tarta de Santiago</option>
+            <option value="cheesecake_frutos">Cheesecake de Frutos Rojos</option>
+            <option value="volcan_chocolate">Volcán de Chocolate con Vainilla</option>
+            <option value="mouse_maracuya">Mousse de Maracuyá</option>
+            <option value="frutas_frescas">Selección de Frutas Frescas</option>
+            <option value="crepes_nutella">Crepes con Nutella y Banano</option>
+            <option value="tiramisu_clasico">Tiramisú Clásico</option>
+            <option value="flan_caramelo">Flan de Caramelo Casero</option>
+            <option value="panna_cotta_vainilla">Panna Cotta de Vainilla</option>
+            <option value="brownie_caliente">Brownie Caliente con Nuez</option>
+            <option value="helado">Helado Personalizado</option>
+        </select>
+
+        <div class="opciones-helado" style="display:none;">
+            <label>Helado - Elige uno de nuestros 10 sabores Gourmet:</label>
+            <select name="sabor_helado">
+                <option value="">-- Seleccionar Sabor --</option>
+                <option value="vainilla_madagascar">Vainilla de Madagascar</option>
+                <option value="chocolate_belga">Chocolate Belga Oscuro</option>
+                <option value="pistacho_siciliano">Pistacho Siciliano</option>
+                <option value="frambuesa_sorbete">Sorbete de Frambuesa</option>
+                <option value="caramelo_salado">Caramelo Salado</option>
+                <option value="cafe_moka">Café Moka</option>
+                <option value="menta_chips">Menta y Chispas de Chocolate</option>
+                <option value="coco_tostado">Coco Tostado</option>
+                <option value="ron_pasas">Ron con Pasas</option>
+                <option value="dulce_leche">Dulce de Leche</option>
+            </select>
+        </div>
+    </fieldset>
+
+    <div class="submit-area">
+        <button type="submit" class="submit-button">Hacer Pedido</button>
+    </div>
+
 </form>
 </body>
 </html>
