@@ -1,0 +1,204 @@
+/* Importar fuentes: Poppins para títulos (moderno) y Roboto para texto (legible) */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Roboto:wght@300;400;500&display=swap');
+
+/* Paleta de Colores:
+   - Primario (Botones/Énfasis): #4CAF50 (Verde Olivo)
+   - Secundario (Fondo): #F7F7F7 (Gris Claro)
+   - Fondo de Contenido: #FFFFFF (Blanco Puro)
+   - Texto: #333333 (Gris Oscuro)
+   - Sombra: #E0E0E0 (Sombra sutil)
+*/
+
+/* --- Globales y Reset --- */
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #F7F7F7; /* Gris claro suave */
+    color: #333333;
+    margin: 0;
+    padding: 40px 20px;
+    line-height: 1.6;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 50px;
+    padding: 30px 20px;
+    background-color: #FFFFFF;
+    border-radius: 12px;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.08); /* Sombra más pronunciada pero suave */
+}
+
+h1 {
+    font-family: 'Poppins', sans-serif;
+    color: #4CAF50; /* Verde Olivo Elegante */
+    font-weight: 700;
+    letter-spacing: 1px;
+    font-size: 2.5em;
+    margin-bottom: 5px;
+}
+
+p {
+    font-size: 1.1em;
+    color: #666;
+}
+
+/* --- Estilos del Formulario Contenedor --- */
+.pedido-form {
+    max-width: 950px;
+    margin: 0 auto;
+    padding: 40px;
+    background-color: #FFFFFF;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    border: 1px solid #E0E0E0; /* Borde sutil */
+}
+
+/* --- Estilos de las Secciones (Fieldset) --- */
+.menu-section {
+    border: none; /* Eliminamos el borde clásico */
+    border-bottom: 2px solid #EEEEEE; /* Separador sutil */
+    padding: 30px 0;
+    margin-bottom: 30px;
+}
+
+.menu-section:last-of-type {
+    border-bottom: none; /* No hay separador en la última sección */
+    margin-bottom: 0;
+}
+
+legend {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.6em;
+    font-weight: 600;
+    color: #4CAF50;
+    padding: 0 5px;
+    margin-bottom: 15px;
+    border-left: 5px solid #4CAF50; /* Detalle elegante */
+    padding-left: 15px;
+}
+
+/* --- Diseño de Inputs y Selects --- */
+label {
+    display: block;
+    margin-top: 20px;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: #333333;
+    font-size: 1.05em;
+}
+
+select {
+    appearance: none; /* Quita el estilo nativo en Chrome/Firefox */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #CCCCCC;
+    border-radius: 6px;
+    box-sizing: border-box;
+    font-size: 1em;
+    background-color: #FDFDFD;
+    cursor: pointer;
+    transition: border-color 0.3s, box-shadow 0.3s;
+
+    /* Icono de flecha personalizado para el select */
+    background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%234CAF50%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13%205.1L146.2%20202.7%2018.8%2074.5c-11.4-12.5-30.8-13.3-42.9-1.9s-13.3%2030.8-1.9%2042.9l133.5%20147.2c5.6%206.2%2013.3%209.5%2021.5%209.5%208.4%200%2016.1-3.6%2022.1-10.1l133.5-147.2c11.4-12.5%2010.6-31.9-1.9-43.4z%22%2F%3E%3C%2Fsvg%3E');
+    background-repeat: no-repeat;
+    background-position: right 10px top 50%;
+    background-size: 12px;
+}
+
+select:focus {
+    border-color: #4CAF50; /* Resalta el foco */
+    box-shadow: 0 0 5px rgba(76, 175, 80, 0.5);
+    outline: none;
+}
+
+/* Estilos para Radio Buttons (Opciones en línea) */
+.inline-options {
+    display: flex;
+    gap: 30px;
+    margin-top: 15px;
+    margin-bottom: 20px;
+    padding: 10px 15px;
+    background-color: #f9f9f9;
+    border-radius: 6px;
+}
+
+.inline-options label {
+    display: inline-flex; /* Para alinear el texto y el radio */
+    align-items: center;
+    margin: 0;
+    font-weight: 400;
+    cursor: pointer;
+}
+
+.inline-options input[type="radio"] {
+    margin-right: 8px;
+    transform: scale(1.1); /* Hace los radio buttons un poco más grandes */
+}
+
+/* Resaltar las opciones condicionales (Jugo y Helado) */
+.opciones-jugo, .opciones-helado {
+    padding: 15px;
+    margin-top: 15px;
+    border: 2px dashed #B2DFDB; /* Borde más llamativo */
+    background-color: #E8F5E9; /* Fondo muy suave */
+    border-radius: 8px;
+}
+
+.opciones-jugo select, .opciones-helado select {
+    border: 1px solid #4CAF50;
+    background-color: #FFFFFF;
+}
+
+
+/* --- Botón de Enviar --- */
+.submit-area {
+    text-align: center;
+    margin-top: 50px;
+}
+
+.submit-button {
+    background-color: #4CAF50; /* Verde Olivo */
+    color: white;
+    padding: 15px 40px;
+    border: none;
+    border-radius: 50px; /* Botón redondeado */
+    cursor: pointer;
+    font-size: 1.3em;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.submit-button:hover {
+    background-color: #388E3C; /* Verde más oscuro al pasar el mouse */
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* --- Estilo para la página de confirmación del Servlet --- */
+.pedido-form h2 {
+    font-family: 'Poppins', sans-serif;
+    color: #4CAF55;
+    text-align: center;
+    margin-bottom: 25px;
+    border-bottom: 2px solid #E8F5E9;
+    padding-bottom: 10px;
+}
+
+.pedido-form ul li {
+    background-color: #F9F9F9;
+    padding: 10px 15px;
+    border-left: 5px solid #4CAF50;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    font-size: 1.1em;
+}
+
+.pedido-form ul li strong {
+    color: #333;
+}

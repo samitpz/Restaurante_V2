@@ -26,7 +26,14 @@ public class Pedido {
         total = detalles.stream().mapToDouble(DetallePedido::getSubtotal).sum();
     }
 
-    public double getTotal() { return total; }
+    public double getTotal() {
+        return total;
+    }
+
+    // ✅ Método que faltaba
+    public List<DetallePedido> getDetalles() {
+        return detalles;
+    }
 
     public void mostrarPedido() {
         System.out.println("Pedido #" + id + " - Cliente: " + cliente.getNombre());

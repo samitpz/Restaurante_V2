@@ -28,12 +28,12 @@ public class InterfazRestaurante extends JFrame {
         panel.setLayout(new GridLayout(6, 2, 10, 10));
 
         // Componentes
-        comboEntrada = new JComboBox<>(new String[]{"Ninguna", "Ensalada", "Sopa del día", "Empanadas"});
+        comboEntrada = new JComboBox<>(new String[]{"Ninguna", "Ensalada César", "Sopa del día", "Empanadas"});
         comboPlatoFuerte = new JComboBox<>(new String[]{"Ninguno", "Pasta Alfredo", "Carne Asada", "Pollo a la Plancha"});
         comboPostre = new JComboBox<>(new String[]{"Ninguno", "Flan", "Helado", "Tiramisú"});
-        comboBebida = new JComboBox<>(new String[]{"Ninguna", "Limonada", "Coca Cola", "Jugo Natural"});
+        comboBebida = new JComboBox<>(new String[]{"Ninguna", "Limonada", "Cerveza", "Agua", "Jugo Natural"});
 
-        btnPedir = new JButton("Realizar Pedido");
+        btnPedir = new JButton("🧾 Realizar Pedido");
         areaResultado = new JTextArea();
         areaResultado.setEditable(false);
 
@@ -82,35 +82,23 @@ public class InterfazRestaurante extends JFrame {
 
         // Bebida
         if (!comboBebida.getSelectedItem().equals("Ninguna")) {
-    <?xml version="1.0" encoding="UTF-8"?>
-                    <web-app xmlns="https://jakarta.ee/xml/ns/jakartaee"
-            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-            xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee
-            https://jakarta.ee/xml/ns/jakartaee/web-app_5_0.xsd"
-            version="5.0">
-
-                    <display-name>Restaurante Samuel</display-name>
-
-                    <servlet>
-                    <servlet-name>PedidoServlet</servlet-name>
-                    <servlet-class>restaurante.controller.PedidoServlet</servlet-class>
-    </servlet>
-
-                    <servlet-mapping>
-                    <servlet-name>PedidoServlet</servlet-name>
-                    <url-pattern>/pedido</url-pattern>
-                    </servlet-mapping>
-
-                    </web-app>
-                    pedido.agregarPlato(new Plato(4, comboBebida.getSelectedItem().toString(), 5000, "Bebida"), 1);
+            pedido.agregarPlato(new Plato(4, comboBebida.getSelectedItem().toString(), 5000, "Bebida"), 1);
         }
 
+        // Procesar pedido
         PedidoService service = new PedidoService();
         service.registrarPedido(pedido);
 
+        // Mostrar resultado
         areaResultado.setText("✅ Pedido Realizado\n\n");
-        areaResultado.append("Cliente: " + cliente.getNombre() + "\n\n");
-        pedido.mostrarPedido();
+        areaResultado.append("Cliente: " + cliente.getNombre() + "\n");
+        areaResultado.append("Total: $" + pedido.getTotal() + "\n\n");
+        areaResultado.append("Detalles:\n");
+
+        for (DetallePedido detalle : pedido.getDetalles()) {
+            areaResultado.append("- " + detalle.getPlato().getNombre() + " x" + detalle.getCantidad() +
+                    " = $" + detalle.getSubtotal() + "\n");
+        }
     }
 
     public static void main(String[] args) {
